@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../models/games_model.dart';
 
 class PromoWidget extends StatelessWidget {
+  const PromoWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Games>(builder: (context, value, child) {
