@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gamers/widgets/avatar_widget.dart';
+import 'package:gamers/widgets/bottom_nav_bar.dart';
+import 'package:gamers/widgets/bottom_widget.dart';
 import 'package:gamers/widgets/center_view.dart';
 import 'package:gamers/widgets/promo_widget.dart';
 import 'package:gamers/widgets/search_switch.dart';
@@ -9,11 +12,13 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff13111c),
+      extendBody: true,
+      bottomNavigationBar: const BottomNavBar(),
+      backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          height: 860,
           child: Stack(
             children: [
               Container(
@@ -94,32 +99,10 @@ class MainPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 70,
                             height: 60,
-                            child: Stack(
-                              children: [
-                                const CircleAvatar(
-                                  radius: 50,
-                                  backgroundImage: AssetImage('assets/avatars/avatar.png'),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Container(
-                                    width: 30,
-                                    height: 30,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.deepOrange,
-                                      borderRadius: BorderRadius.all(Radius.circular(20),),
-                                    ),
-                                    child: const Center(
-                                      child: Text('11', style: TextStyle(color: Colors.white),),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                            child: AvatarWidget(),
                           ),
                           SizedBox(
                             width: 40,
@@ -130,12 +113,14 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25.0),
                       child: PromoWidget(),
                     ),
                     const SizedBox(height: 10,),
-                    const CenterView()
+                    const CenterView(),
+                    const SizedBox(height: 20,),
+                    const BottomWidget(),
                   ],
                 ),
               )
@@ -146,6 +131,8 @@ class MainPage extends StatelessWidget {
     );
   }
 }
+
+
 
 
 

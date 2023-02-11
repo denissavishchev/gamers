@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         Provider(create: (context) => const Games(name: '', avatar: '', poster: '', connected: '', playing: '', friends: '')),
         Provider(create: (context) => const Images(name: '', image: '', name2: '', rating: '', reviews: '', stars: '', description: '', color: '', color2: '')),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: MainPage(),
       ),
