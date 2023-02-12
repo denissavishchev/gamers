@@ -141,7 +141,9 @@ class PlayerPage extends StatelessWidget {
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height / 4,
-                  child: FriendsList()),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: const FriendsList())),
             ],
           ),
         ),

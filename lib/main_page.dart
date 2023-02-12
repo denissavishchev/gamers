@@ -12,6 +12,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       extendBody: true,
       bottomNavigationBar: const BottomNavBar(),
       backgroundColor: Colors.transparent,

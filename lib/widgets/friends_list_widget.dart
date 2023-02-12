@@ -5,9 +5,8 @@ import 'package:provider/provider.dart';
 import '../models/games_model.dart';
 
 class FriendsList extends StatelessWidget {
-  const FriendsList({
-    Key? key,
-  }) : super(key: key);
+  const FriendsList({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +31,34 @@ class FriendsList extends StatelessWidget {
 Widget gamesWidget(List<Games> games, {required BuildContext context}) =>
     Column(
       children: [
-        Row(
-          children: [
-            Text('Friends', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
-            Text('Requests', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text('Friends',
+                style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+              const SizedBox(width: 20,),
+              Text('Requests',
+                style: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 30,),),
+              const SizedBox(width: 10,),
+              Container(
+                width: 30,
+                height: 30,
+                decoration: const BoxDecoration(
+                  color: Colors.deepOrange,
+                  borderRadius: BorderRadius.all(Radius.circular(20),),
+                ),
+                child: const Center(
+                  child: Text('11', style: TextStyle(color: Colors.white),),
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.7,
           child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: games.length,
@@ -91,7 +109,9 @@ Widget gamesWidget(List<Games> games, {required BuildContext context}) =>
                                   ),
                                   width: 70,
                                     height: 70,
-                                    child: Image.asset('assets/posters/${game.poster}.jpg'))
+                                    child: game.connected == 'true'
+                                        ? Image.asset('assets/posters/${game.poster}.jpg')
+                                        : null)
                               ],
                             ),
                           ),
